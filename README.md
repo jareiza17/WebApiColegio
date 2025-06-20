@@ -54,6 +54,12 @@ cd WebApiColegio
 3. Aplica las migraciones y crea la base de datos:
 
 ```bash
+Add-Migration Colegio
+```
+
+4. Aplica las migraciones y crea la base de datos:
+
+```bash
 Update-Database
 ```
 

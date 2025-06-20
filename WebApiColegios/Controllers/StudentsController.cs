@@ -15,7 +15,7 @@ namespace WebApiColegios.Controllers
             _studentService = studentService;
         }
 
-        [HttpGet("lista")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<StudentDTO>>> GetAll()
         {
             var students = await _studentService.GetAllAsync();

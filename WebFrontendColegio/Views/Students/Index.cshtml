@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebFrontendColegio.Models.StudentDTO>
+
+<h2> Lista de Estudiantes</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Documento</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.FullName</td>
+                <td>@student.DocumentNumber</td>
+                <td>@student.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

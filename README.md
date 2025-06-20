@@ -40,7 +40,7 @@ API RESTful desarrollada en ASP.NET Core para la gestión de estudiantes, materi
 
 ```bash
 git clone https://github.com/jareiza17/WebApiColegio.git
-cd WebApiColegios
+cd WebApiColegio
 ```
 
 2. Verifica tu cadena de conexión en `appsettings.json`:

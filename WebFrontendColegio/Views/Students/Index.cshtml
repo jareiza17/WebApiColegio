@@ -1,13 +1,22 @@
 ﻿@model IEnumerable<WebFrontendColegio.Models.StudentDTO>
 
-<h2> Lista de Estudiantes</h2>
+@{
+    ViewData["Title"] = "Lista de Estudiantes";
+}
 
-<table class="table table-striped">
-    <thead>
+<h2 class="mb-3">Lista de Estudiantes</h2>
+
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#createStudentModal">
+    + Nuevo Estudiante
+</button>
+
+<table class="table table-bordered">
+    <thead class="bg-primary text-white">
         <tr>
             <th>Nombre</th>
             <th>Documento</th>
             <th>Email</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +26,58 @@
                 <td>@student.FullName</td>
                 <td>@student.DocumentNumber</td>
                 <td>@student.Email</td>
+                <td>
+                    <button class="btn btn-sm btn-warning me-2"
+                            data-id="@student.StudentID"
+                            data-name="@student.FullName"
+                            data-doc="@student.DocumentNumber"
+                            data-email="@student.Email"
+                            onclick="openEditModal(this)">
+                        ✏️ Editar
+                    </button>
+
+                    <button class="btn btn-sm btn-danger" onclick="deleteStudent(@student.StudentID)">
+                        🗑️ Eliminar
+                    </button>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+<!-- Modal Bootstrap -->
+<div class="modal fade" id="createStudentModal" tabindex="-1" aria-labelledby="createStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="createStudentForm">
+                <input type="hidden" id="studentId" />
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createStudentModalLabel">Nuevo Estudiante</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="fullName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="documentNumber" class="form-label">Documento</label>
+                        <input type="text" class="form-control" id="documentNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/students.js" asp-append-version="true"></script>
+}

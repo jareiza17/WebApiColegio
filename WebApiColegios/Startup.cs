@@ -36,6 +36,16 @@ namespace WebApiColegios
         /// <param name="services">La colección de servicios a configurar.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", builder =>
+                {
+                    builder.WithOrigins("https://localhost:7050") // Ajusta al puerto de tu frontend
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
+
             // Add services to the container
             services.AddControllers(options => {
                 // Agregar filtros, convenciones, etc.
@@ -130,6 +140,9 @@ namespace WebApiColegios
 
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            app.UseCors("AllowFrontend");
+
             app.UseAuthentication();
             app.UseAuthorization();
 

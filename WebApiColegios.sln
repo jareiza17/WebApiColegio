@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainLayer", "DomainLayer\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelsLayer", "ModelsLayer\ModelsLayer.csproj", "{8656578F-E77C-4495-A080-BC70EF000E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiColegios.Tests", "WebApiColegios.Tests\WebApiColegios.Tests.csproj", "{3A592181-13FB-4339-A0F6-2B1FF24993B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiColegios.Tests", "WebApiColegios.Tests\WebApiColegios.Tests.csproj", "{3A592181-13FB-4339-A0F6-2B1FF24993B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrontendColegio", "WebFrontendColegio\WebFrontendColegio.csproj", "{0BD418C0-2596-4DF2-800E-9C1AC98E90F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebFrontendColegio", "WebFrontendColegio\WebFrontendColegio.csproj", "{0BD418C0-2596-4DF2-800E-9C1AC98E90F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

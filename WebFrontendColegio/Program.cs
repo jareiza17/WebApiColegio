@@ -6,7 +6,7 @@ builder.Services.AddControllersWithViews();
 // ✅ HttpClient con puerto correcto de tu API WebApiColegios
 builder.Services.AddHttpClient("ApiClient", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:44309/"); // ← Puerto real según tu launchSettings.json
+    client.BaseAddress = new Uri("https://localhost:7148/"); // ← Puerto real según tu launchSettings.json
 });
 
 var app = builder.Build();

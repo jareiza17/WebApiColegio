@@ -9,8 +9,8 @@
     const data = { fullName, documentNumber, email };
 
     const url = studentId
-        ? `https://localhost:44309/api/school/students/${studentId}`
-        : "https://localhost:44309/api/school/students";
+        ? `https://localhost:7148/api/school/students/${studentId}`
+        : "https://localhost:7148/api/school/students";
 
     const method = studentId ? "PUT" : "POST";
 
@@ -52,7 +52,7 @@ async function deleteStudent(studentId) {
     if (!confirm("¿Estás seguro de eliminar este estudiante?")) return;
 
     try {
-        const response = await fetch(`https://localhost:44309/api/school/students/${studentId}`, {
+        const response = await fetch(`https://localhost:7148/api/school/students/${studentId}`, {
             method: "DELETE"
         });
 

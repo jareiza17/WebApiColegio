@@ -1,0 +1,45 @@
+﻿@model WebFrontendColegio.Models.EnrollmentViewModel
+
+@{
+    ViewData["Title"] = "Inscribir Materias";
+}
+
+<h2 class="mb-3">Inscribir Materias</h2>
+
+<form id="enrollmentForm">
+    <div class="mb-3">
+        <label for="studentSelect" class="form-label">Estudiante</label>
+        <select class="form-select" id="studentSelect" required>
+            <option value="">Seleccione un estudiante</option>
+            @foreach (var student in Model.Students)
+            {
+                <option value="@student.StudentID">@student.FullName</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Materias</label>
+        <div class="form-check" style="max-height: 200px; overflow-y: auto;">
+            @foreach (var subject in Model.Subjects)
+            {
+                <div>
+                    <input class="form-check-input subject-checkbox"
+                           type="checkbox"
+                           value="@subject.SubjectID"
+                           data-credits="@subject.Credits"
+                           id="subject_@subject.SubjectID" />
+                    <label class="form-check-label" for="subject_@subject.SubjectID">
+                        @subject.Name (@subject.Credits créditos)
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Inscribir</button>
+</form>
+
+@section Scripts {
+    <script src="~/js/enrollments.js" asp-append-version="true"></script>
+}

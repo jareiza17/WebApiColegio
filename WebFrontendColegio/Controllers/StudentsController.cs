@@ -1,7 +1,5 @@
-﻿using WebFrontendColegio.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
-using System.Net.Http.Json;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebFrontendColegio.Models;
 
 namespace WebFrontendColegios.Controllers
 {

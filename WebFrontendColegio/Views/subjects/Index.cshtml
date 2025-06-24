@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebFrontendColegio.Models.SubjectDTO>
+
+@{
+    ViewData["Title"] = "Lista de Materias";
+}
+
+<h2 class="mb-3">Lista de Materias</h2>
+
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#subjectModal">
+    + Nueva Materia
+</button>
+
+<table class="table table-bordered">
+    <thead class="bg-primary text-white">
+        <tr>
+            <th>Nombre</th>
+            <th>Código</th>
+            <th>Créditos</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subject in Model)
+        {
+            <tr>
+                <td>@subject.Name</td>
+                <td>@subject.Code</td>
+                <td>@subject.Credits</td>
+                <td>
+                    <button class="btn btn-sm btn-warning me-2"
+                            onclick="openEditSubjectModal(this)"
+                            data-id="@subject.SubjectID"
+                            data-name="@subject.Name"
+                            data-code="@subject.Code"
+                            data-credits="@subject.Credits">
+                        Editar
+                    </button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteSubject(@subject.SubjectID)">
+                        Eliminar
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal para crear/editar materia -->
+<div class="modal fade" id="subjectModal" tabindex="-1" aria-labelledby="subjectModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="subjectForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="subjectModalLabel">Materia</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="subjectId" />
+                    <div class="mb-3">
+                        <label for="subjectName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="subjectName" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="subjectCode" class="form-label">Código</label>
+                        <input type="text" class="form-control" id="subjectCode" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="subjectCredits" class="form-label">Créditos</label>
+                        <input type="number" class="form-control" id="subjectCredits" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/subjects.js" asp-append-version="true"></script>
+}
